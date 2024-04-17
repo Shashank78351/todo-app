@@ -19,5 +19,15 @@ pipeline {
             }
 
         }
+        stage('sonarqube'){
+            steps{
+                withSonarQubeEnv('SonarQube'){
+                    mvn clean verify sonar:sonar \
+                    -Dsonar.projectKey=todo-sample \
+                    -Dsonar.projectName='todo-sample' \
+                    -Dsonar.host.url=http://linuxappvm.eastus.cloudapp.azure.com:9000 
+                }
+            }
+        }
     }
 }
