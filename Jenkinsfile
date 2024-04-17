@@ -2,6 +2,7 @@ pipeline {
     agent any
     tools {
         maven "maven"
+        docker "docker"
     }
 
     stages{
@@ -31,7 +32,6 @@ pipeline {
             }
         }
         stage('Docker Build') {
-            agent any
             steps {
                 sh 'docker build -t smr1234/sample-web:latest . '
             }
