@@ -30,5 +30,11 @@ pipeline {
                 }
             }
         }
+        stage('Docker Build') {
+            agent any
+            steps {
+                sh 'docker build -t smr1234/sample-web:latest . '
+            }
+        }
     }
 }
