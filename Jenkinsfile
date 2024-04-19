@@ -30,13 +30,13 @@ pipeline {
                 }
             }
         }
-        stage('Docker Build') {
-            steps {
-                withDockerRegistry(credentialsId: '9da214ad-553c-443b-a1c4-169a8a78cfe7', url: 'registry.gitlab.com') {
-                  sh 'docker build -t registry.gitlab.com/smr1234/sample-web . '
-                }
+        // stage('Docker Build') {
+        //     steps {
+        //         withDockerRegistry(credentialsId: '9da214ad-553c-443b-a1c4-169a8a78cfe7', url: 'registry.gitlab.com') {
+        //           sh 'docker build -t registry.gitlab.com/smr1234/sample-web . '
+        //         }
                 
-            }
-        }
+        //     }
+        // }
     }
 }
