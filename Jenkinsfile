@@ -3,9 +3,7 @@ pipeline {
     tools {
         maven "maven"
     }
-    environment{
-        SCANNER_HOME= tool 'sonar-scanner'
-    }
+
     stages{
         stage('Build Artifact'){
             steps{
@@ -24,13 +22,11 @@ pipeline {
         stage('sonarqube'){
             steps{
                 withSonarQubeEnv('SonarQube'){
-                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName='todo-sample' -Dsonar.projectKey=todo-sample \
-                           -Dsonar.java.binaries=. '''
-                //  sh "mvn clean verify sonar:sonar \
-                //         -Dsonar.projectKey=todo-sample \
-                //         -Dsonar.projectName='todo-sample' \
-                //         -Dsonar.host.url=http://linuxappvm.eastus.cloudapp.azure.com:9000 \
-                //         -Dsonar.token=sqp_a1830fc740c06afc59952d2977170121489ef1b3"
+                  sh "mvn clean verify sonar:sonar \
+                        -Dsonar.projectKey=todo-sample \
+                        -Dsonar.projectName='todo-sample' \
+                        -Dsonar.host.url=http://linuxappvm.eastus.cloudapp.azure.com:9000 \
+                        -Dsonar.token=sqp_a1830fc740c06afc59952d2977170121489ef1b3"
                 }
             }
         }
