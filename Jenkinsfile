@@ -33,7 +33,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 withDockerContainer(image: 'https://gitlab.com/smr1234/sample-web', toolName: 'docker') {
-                    sh "docker build -t image:latest ."
+                    sh "docker build -t $image:latest ."
                }
                 
             }
