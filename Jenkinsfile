@@ -4,7 +4,7 @@ pipeline {
         maven "maven"
     }
 
-    // stages{
+    stages{
     //     stage('Build Artifact'){
     //         steps{
     //             sh "mvn clean package -DskipTests=true"
