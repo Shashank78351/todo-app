@@ -49,6 +49,8 @@ pipeline {
                     // Push Docker image to registry
                     docker.withRegistry("${DOCKER_REGISTRY}", '9da214ad-553c-443b-a1c4-169a8a78cfe7') {
                         docker.image("smr1234/sample-web:${DOCKER_TAG}").push()
+                        docker.image("smr1234/sample-web:${env.BUILD_NUMBER}").push()
+
                     }
                 }
             }
