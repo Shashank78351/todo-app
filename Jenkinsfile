@@ -39,7 +39,7 @@ pipeline {
             steps {
                 script {
                     // Build Docker image
-                    docker.build("sample-web:${DOCKER_TAG}")
+                    docker.build("smr1234/sample-web:${DOCKER_TAG}")
                 }
             }
         }
@@ -48,7 +48,7 @@ pipeline {
                 script {
                     // Push Docker image to registry
                     docker.withRegistry("${DOCKER_REGISTRY}", '9da214ad-553c-443b-a1c4-169a8a78cfe7') {
-                        docker.image("sample-web:${DOCKER_TAG}").push()
+                        docker.image("smr1234/sample-web:${DOCKER_TAG}").push()
                     }
                 }
             }
