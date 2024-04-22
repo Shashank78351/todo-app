@@ -5,7 +5,7 @@ pipeline {
         dockerTool 'docker'
     }
     environment {
-        DOCKER_REGISTRY = 'https://hub.docker.com'
+        DOCKER_REGISTRY = 'https://index.docker.io/v1/'
         // Define Docker image tag
         // DOCKER_TAG = 'latest'
     }
