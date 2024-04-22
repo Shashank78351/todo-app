@@ -31,14 +31,22 @@ pipeline {
     //         }
     //     }
         stage('Docker Build') {
-            steps {
-                 script{
-                    withDockerRegistry(credentialsId: '9da214ad-553c-443b-a1c4-169a8a78cfe7', toolName: 'docker', url: 'registry.gitlab.com') {
-                          sh 'docker build -t registry.gitlab.com/smr1234/sample-web .'
+             steps {
+                script{
+                       app= docker.build("sample-web")
                     }
-                 }
-                
+                    
+                }
             }
-        }
+        // stage('Docker Build') {
+        //     steps {
+        //          script{
+        //             withDockerRegistry(credentialsId: '9da214ad-553c-443b-a1c4-169a8a78cfe7', toolName: 'docker', url: 'registry.gitlab.com') {
+                          
+        //             }
+        //          }
+                
+        //     }
+        // }
     }
 }
