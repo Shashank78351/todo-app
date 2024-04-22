@@ -43,19 +43,17 @@ pipeline {
                 }
             }
         }
-        stage('Docker push') {
+         stage('Docker push') {
             steps {
                 script {
                     // Push Docker image to registry
                     docker.withRegistry("${DOCKER_REGISTRY}", '9da214ad-553c-443b-a1c4-169a8a78cfe7') {
-                        docker.image("smr1234/sample-web:latest").pull()
-                        docker.tag("smr1234/sample-web:latest", "${DOCKER_REGISTRY}/smr1234/sample-web:${env.BUILD_NUMBER}")
-                        docker.image("smr1234/sample-web:${DOCKER_TAG}").push()
-                        docker.image("smr1234/sample-web:${env.BUILD_NUMBER}").push()
-
+                        def dockerImage = docker.image("smr1234/sample-web:latest")
+                        dockerImage.push("${env.BUILD_NUMBER}")
+                        dockerImage.push("latest")
                     }
                 }
             }
         }
-}
+    }
 }
