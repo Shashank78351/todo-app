@@ -33,22 +33,22 @@ pipeline {
     //         }
     //     }
         stage('Docker Build') {
-             steps {
-                script{
-                       app= docker.build("sample-web:latest")
-                    }
-                    
+            steps {
+                script {
+                    // Build Docker image
+                    docker.build("sample-web:${DOCKER_TAG}")
                 }
             }
+        }
         stage('Docker push') {
             steps {
-                 script{
-                    withDockerRegistry(credentialsId: 'db28354f-484c-4bda-9aac-975c35bf0c2c', toolName: 'docker') {
-                        app.push(latest)
+                script {
+                    // Push Docker image to registry
+                    docker.withRegistry("${DOCKER_REGISTRY}", 'db28354f-484c-4bda-9aac-975c35bf0c2c') {
+                        docker.image("sample-web:${DOCKER_TAG}").push()
                     }
-                 }
-                
+                }
             }
         }
-    }
+}
 }
