@@ -3,7 +3,9 @@ pipeline {
     tools {
         maven "maven"
     }
-
+    environment {
+        DOCKER_REGISTRY = 'https://registry.gitlab.com'
+    }
     stages{
     //     stage('Build Artifact'){
     //         steps{
@@ -41,7 +43,7 @@ pipeline {
         stage('Docker push') {
             steps {
                  script{
-                    withDockerRegistry(credentialsId: '9da214ad-553c-443b-a1c4-169a8a78cfe7', toolName: 'docker', url: 'https://registry.gitlab.com') {
+                    withDockerRegistry(credentialsId: '9da214ad-553c-443b-a1c4-169a8a78cfe7', toolName: 'docker', url: 'DOCKER_REGISTRY') {
                       app.push(latest)     
                     }
                  }
