@@ -38,7 +38,7 @@ pipeline {
                     
                 }
             }
-        stage('Docker Build') {
+        stage('Docker push') {
             steps {
                  script{
                     withDockerRegistry(credentialsId: '9da214ad-553c-443b-a1c4-169a8a78cfe7', toolName: 'docker', url: 'registry.gitlab.com') {
