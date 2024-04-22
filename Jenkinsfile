@@ -43,8 +43,8 @@ pipeline {
         stage('Docker push') {
             steps {
                  script{
-                    withDockerRegistry(credentialsId: '9da214ad-553c-443b-a1c4-169a8a78cfe7', toolName: 'docker', url: 'DOCKER_REGISTRY') {
-                      app.push(latest)     
+                    withDockerRegistry(credentialsId: 'db28354f-484c-4bda-9aac-975c35bf0c2c', toolName: 'docker') {
+                        app.push(latest)
                     }
                  }
                 
