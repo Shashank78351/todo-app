@@ -7,7 +7,7 @@ pipeline {
     environment {
         DOCKER_REGISTRY = 'https://registry.gitlab.com'
         // Define Docker image tag
-        DOCKER_TAG = 'latest'
+        // DOCKER_TAG = 'latest'
     }
     stages{
     //     stage('Build Artifact'){
@@ -39,7 +39,7 @@ pipeline {
             steps {
                 script {
                     // Build Docker image
-                    docker.build("smr1234/sample-web:${DOCKER_TAG}")
+                    docker.build("smr1234/sample-web:latest")
                 }
             }
         }
@@ -48,6 +48,8 @@ pipeline {
                 script {
                     // Push Docker image to registry
                     docker.withRegistry("${DOCKER_REGISTRY}", '9da214ad-553c-443b-a1c4-169a8a78cfe7') {
+                        docker.image("smr1234/sample-web:latest").pull()
+                        docker.tag("smr1234/sample-web:latest", "${DOCKER_REGISTRY}/smr1234/sample-web:${env.BUILD_NUMBER}")
                         docker.image("smr1234/sample-web:${DOCKER_TAG}").push()
                         docker.image("smr1234/sample-web:${env.BUILD_NUMBER}").push()
 
