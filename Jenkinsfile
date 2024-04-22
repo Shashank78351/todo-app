@@ -2,9 +2,12 @@ pipeline {
     agent any
     tools {
         maven "maven"
+        dockerTool 'docker'
     }
     environment {
         DOCKER_REGISTRY = 'https://registry.gitlab.com'
+        // Define Docker image tag
+        DOCKER_TAG = 'latest'
     }
     stages{
     //     stage('Build Artifact'){
@@ -44,7 +47,7 @@ pipeline {
             steps {
                 script {
                     // Push Docker image to registry
-                    docker.withRegistry("${DOCKER_REGISTRY}", 'db28354f-484c-4bda-9aac-975c35bf0c2c') {
+                    docker.withRegistry("${DOCKER_REGISTRY}", '9da214ad-553c-443b-a1c4-169a8a78cfe7') {
                         docker.image("sample-web:${DOCKER_TAG}").push()
                     }
                 }
