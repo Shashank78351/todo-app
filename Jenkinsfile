@@ -35,7 +35,7 @@ pipeline {
         stage('Docker Build') {
              steps {
                 script{
-                       app= docker.build("sample-web")
+                       app= docker.build("sample-web:latest")
                     }
                     
                 }
