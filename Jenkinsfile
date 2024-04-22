@@ -32,9 +32,11 @@ pipeline {
     //     }
         stage('Docker Build') {
             steps {
-                withDockerContainer(image: 'sample-web', toolName: 'docker') {
-                    sh "docker build -t $image:latest ."
-               }
+                 script{
+                    withDockerRegistry(credentialsId: '9da214ad-553c-443b-a1c4-169a8a78cfe7', toolName: 'docker', url: 'registry.gitlab.com') {
+                          sh 'docker build -t registry.gitlab.com/smr1234/sample-web .'
+                    }
+                 }
                 
             }
         }
