@@ -58,6 +58,8 @@ pipeline {
         stage('Deploying') {
             steps {
                 script {
+                    sh "sudo wget https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64 -O /usr/local/bin/yq"
+                    sh "sudo chmod +x /usr/local/bin/yq"
                     sh "yq e -i '.spec.template.spec.containers[0].image=\"sample-web:${env.BUILD_NUMBER}\"' kube/deployment.yaml"
                 }
             }
