@@ -55,10 +55,10 @@ pipeline {
                 }
             }
         }
-        stage('Deploying to Kubernetes') {
+        stage('Deploying') {
             steps {
                 script {
-                    sh "kubectl apply -f *.yaml -n webapp"
+                    sh "yq e -i '.spec.template.spec.containers[0].image=\"sample-web:${env.BUILD_NUMBER}\"' kube/deployment.yaml"
                 }
             }
         }
