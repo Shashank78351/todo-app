@@ -6,6 +6,7 @@ pipeline {
     }
     environment {
         DOCKER_REGISTRY = 'https://index.docker.io/v1/'
+        YQ_VERSION = "4.12.0"
         // Define Docker image tag
         // DOCKER_TAG = 'latest'
     }
