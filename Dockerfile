@@ -9,7 +9,7 @@ FROM openjdk:8-jre-alpine
 
 COPY --from=builder /usr/src/app/target/*.jar /app.jar
 
-EXPOSE 8085
+EXPOSE 8090
 
 ENTRYPOINT ["java"]
 CMD ["-jar", "/app.jar"]

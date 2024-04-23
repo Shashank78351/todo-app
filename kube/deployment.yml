@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: spring-deployment
+  name: webapp-deployment
   labels:
-    app: spring
+    app: webapp
 spec:
-  replicas: 3
+  replicas: 
   selector:
     matchLabels:
-      app: spring
+      app: webapp
   template:
     metadata:
       labels:
-        app: spring
+        app: webapp
     spec:
       containers:
-      - name: spring
-        image: linuxappvm.eastus.cloudapp.azure.com:5050/root/samplespring:latest
+      - name: webapp
+        image: smr123/sample-web:latest
         ports:
-        - containerPort: 8085
+        - containerPort: 8090
       imagePullSecrets:
       - name: my-secret
 
