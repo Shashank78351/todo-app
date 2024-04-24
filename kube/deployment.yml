@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: webapp
+  name: webapp-deployment
+  labels:
+    app: webapp
+spec:
+  replicas: 
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - name: webapp
+        image: smr123/sample-web:80
+        ports:
+        - containerPort: 8090
+      imagePullSecrets:
+      - name: my-secret
