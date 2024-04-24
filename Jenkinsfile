@@ -67,13 +67,13 @@ pipeline {
                         git config user.email "sm00776153@techmahindra.com"
                         git config user.name "smr1234"
                         BUILD_NUMBER=${env.BUILD_NUMBER}
-                        sed "s/latest/${env.BUILD_NUMBER}/g" kube/deployment.yml > kube/deployment_tmp.yml
+                        sed "s/latest/${BUILD_NUMBER}/g" kube/deployment.yml > kube/deployment_tmp.yml
                         cp kube/deployment_tmp.yml kube/deployment.yml
                         rm kube/deployment_tmp.yml
                         cat kube/deployment.yml
                         git add kube/deployment.yml 
                         git status
-                        git commit -m "update deployment image to version ${env.BUILD_NUMBER}"
+                        git commit -m "update deployment image to version ${BUILD_NUMBER}"
                         git push https://glpat-2_AbyCe2Bz_fwRFsiyZi@gitlab.com/${GIT_USER}/${GIT_REPO} HEAD:main
 
                     """
