@@ -58,10 +58,12 @@ pipeline {
         }
         stage('Deploying') {
             steps {
+                agent {
+                    docker {
+                        image 'registry.gitlab.com/gitlab-ci-utils/curl-jq'
+                    }
+                }
                 script {
-                    sh "curl -LO https://github.com/mikefarah/yq/releases/download/4.12.0/yq_linux_amd64"
-                    sh "sudo mv yq_linux_amd64 /usr/local/bin/yq"
-                    sh "chmod +x /usr/local/bin/yq"
                     sh "yq e -i '.spec.template.spec.containers[0].image=\"sample-web:${env.BUILD_NUMBER}\"' kube/deployment.yaml"
                 }
             }
