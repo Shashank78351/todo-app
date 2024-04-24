@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            registry.gitlab.com/gitlab-ci-utils/curl-jq
+           image 'registry.gitlab.com/gitlab-ci-utils/curl-jq'
         }
     }
     tools {
