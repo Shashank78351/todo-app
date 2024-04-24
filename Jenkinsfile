@@ -63,7 +63,7 @@ pipeline {
             }
             steps {
                 withCredentials([gitUsernamePassword(credentialsId: '9da214ad-553c-443b-a1c4-169a8a78cfe7', gitToolName: 'Default')]) {
-                    sh '''
+                    sh """
                         git config user.email "sm00776153@techmahindra.com"
                         git config user.name "smr1234"
                         BUILD_NUMBER=${env.BUILD_NUMBER}
@@ -72,7 +72,7 @@ pipeline {
                         git commit -m "update deployment image to version ${env.BUILD_NUMBER}"
                         git push https://glpat-2_AbyCe2Bz_fwRFsiyZi@gitlab.com/${GIT_USER}/${GIT_REPO} HEAD:main
 
-                    ''' 
+                    """
                 }
             }
         }
