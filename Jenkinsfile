@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            registry.gitlab.com/gitlab-ci-utils/curl-jq
+        }
+    }
     tools {
         maven "maven"
         dockerTool 'docker'
