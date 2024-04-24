@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: smr123/sample-web:94
+        image: smr123/sample-web:95
         ports:
         - containerPort: 8090
       imagePullSecrets:
