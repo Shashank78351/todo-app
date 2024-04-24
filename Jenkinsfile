@@ -66,6 +66,7 @@ pipeline {
                     sh """
                         git config user.email "sm00776153@techmahindra.com"
                         git config user.name "smr1234"
+                        git checkout main
                         BUILD_NUMBER=${env.BUILD_NUMBER}
                         sed -i "s/latest/${BUILD_NUMBER}/g" kube/deployment.yml > kube/deployment_tmp.yml
                         cp kube/deployment_tmp.yml kube/deployment.yml
