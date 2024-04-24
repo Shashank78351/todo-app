@@ -1,16 +1,12 @@
 pipeline {
-    agent {
-        docker {
-           image 'registry.gitlab.com/gitlab-ci-utils/curl-jq'
-        }
-    }
+    agent any
     tools {
         maven "maven"
         dockerTool 'docker'
     }
     environment {
         DOCKER_REGISTRY = 'https://index.docker.io/v1/'
-        YQ_VERSION = "4.12.0"
+        // YQ_VERSION = "4.12.0"
         // Define Docker image tag
         // DOCKER_TAG = 'latest'
     }
@@ -63,7 +59,8 @@ pipeline {
         stage('Deploying') {
             steps {
                 script {
-                    sh "wget https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64 -O /usr/local/bin/yq"
+                    sh "curl -LO https://github.com/mikefarah/yq/releases/download/4.12.0/yq_linux_amd64"
+                    sh "mv yq_linux_amd64 /usr/local/bin/yq"
                     sh "chmod +x /usr/local/bin/yq"
                     sh "yq e -i '.spec.template.spec.containers[0].image=\"sample-web:${env.BUILD_NUMBER}\"' kube/deployment.yaml"
                 }
