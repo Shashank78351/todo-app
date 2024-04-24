@@ -69,6 +69,7 @@ pipeline {
                         BUILD_NUMBER=${env.BUILD_NUMBER}
                         sed "s/latest/${BUILD_NUMBER}/g" kube/deployment.yml > kube/deployment_tmp.yml
                         cp kube/deployment_tmp.yml kube/deployment.yml
+                        rm kube/deployment_tmp.yml
                         cat kube/deployment.yml
                         git add kube/deployment.yml 
                         git status
