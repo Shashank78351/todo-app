@@ -24,7 +24,7 @@ pipeline {
                 junit 'target/surefire-reports/*.xml'
             }
 
-    //     }
+        }
     //     stage('sonarqube'){
     //         steps{
     //             withSonarQubeEnv('SonarQube'){
