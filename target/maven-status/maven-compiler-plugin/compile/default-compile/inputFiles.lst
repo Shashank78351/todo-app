@@ -1,5 +1,5 @@
-C:\Users\sm00776153\Desktop\one\spring-boot-todo-app-main\spring-boot-todo-app\src\main\java\co\sohamds\spring\todo\domain\Todo.java
-C:\Users\sm00776153\Desktop\one\spring-boot-todo-app-main\spring-boot-todo-app\src\main\java\co\sohamds\spring\todo\controllers\TodoController.java
-C:\Users\sm00776153\Desktop\one\spring-boot-todo-app-main\spring-boot-todo-app\src\main\java\co\sohamds\spring\todo\repository\TodoRepository.java
-C:\Users\sm00776153\Desktop\one\spring-boot-todo-app-main\spring-boot-todo-app\src\main\java\co\sohamds\spring\todo\exception\TodoException.java
-C:\Users\sm00776153\Desktop\one\spring-boot-todo-app-main\spring-boot-todo-app\src\main\java\co\sohamds\spring\todo\SpringBootTodoAppApplication.java
+/var/jenkins_home/workspace/webapp/src/main/java/co/sohamds/spring/todo/SpringBootTodoAppApplication.java
+/var/jenkins_home/workspace/webapp/src/main/java/co/sohamds/spring/todo/domain/Todo.java
+/var/jenkins_home/workspace/webapp/src/main/java/co/sohamds/spring/todo/repository/TodoRepository.java
+/var/jenkins_home/workspace/webapp/src/main/java/co/sohamds/spring/todo/exception/TodoException.java
+/var/jenkins_home/workspace/webapp/src/main/java/co/sohamds/spring/todo/controllers/TodoController.java
