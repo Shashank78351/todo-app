@@ -7,9 +7,9 @@ docker_build:
   # services:
   #   - docker:24.0.5-dind
   script:
-    - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER  linuxappvm.eastus.cloudapp.azure.com:5050 --password-stdin
-    - docker build -t linuxappvm.eastus.cloudapp.azure.com:5050/root/sample-webapp .
-    - docker push linuxappvm.eastus.cloudapp.azure.com:5050/root/sample-webapp
+    - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER  https://gitlab.com --password-stdin
+    - docker build -t https://gitlab.com/smr1234/sample-web:latest .
+    - docker push https://gitlab.com/smr1234/sample-web:latest
     - docker images 
 
 
