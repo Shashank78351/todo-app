@@ -1,0 +1,15 @@
+stage:
+    - docker-build
+
+docker_build:
+  stage: docker-build
+  # image: docker:24.0.5
+  # services:
+  #   - docker:24.0.5-dind
+  script:
+    - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER  linuxappvm.eastus.cloudapp.azure.com:5050 --password-stdin
+    - docker build -t linuxappvm.eastus.cloudapp.azure.com:5050/root/sample-webapp .
+    - docker push linuxappvm.eastus.cloudapp.azure.com:5050/root/sample-webapp
+    - docker images 
+
+
