@@ -21,4 +21,4 @@ spec:
         ports:
         - containerPort: 8090
       imagePullSecrets:
-      - name: my-secret
+      - name: my-secret-todo
