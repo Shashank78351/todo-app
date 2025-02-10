@@ -1,7 +1,7 @@
 <settings>
     <servers>
         <server>
-            <id>${repo.id}</id>
+            <id>artifactory</id>
             <username>${repo.login}</username>
             <password>${repo.pwd}</password>
         </server>
